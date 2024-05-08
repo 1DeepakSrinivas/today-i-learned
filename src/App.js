@@ -1,20 +1,44 @@
-import './style.css';
+import "./style.css";
 
-function App(){
-  return (<header className="header">
-  <div class="logo">
-    <img
-      src="logo.png"
-      height="68"
-      width="68"
-      alt="Today I Learned Logo"
-    />
-    <h1>Today I Learned</h1>
-  </div>
+function App() {
+  const appTitle='Today I Learned'
 
-  <button className="btn btn-large btn-open">Share a fact</button>
-</header>
-);
+  return (
+    <>
+      {/* Header */}
+      <header className="header">
+        <div class="logo">
+          <img
+            src="logo.png"
+            height="68"
+            width="68"
+            alt="Today I Learned Logo"
+          />
+          <h1>{appTitle}</h1>
+        </div>
+
+        <button className="btn btn-large btn-open">Share a fact</button>
+      </header>
+
+      <NewFactForm />
+
+      <main class="main">
+        <CategoryFilter />
+        <FactList />
+      </main>
+    </>
+  );
 }
 
-export default App; 
+function NewFactForm() {
+  return <form className="fact-form"> fact form</form>;
+}
+
+function CategoryFilter() {
+  return <aside>Category filter</aside>;
+}
+
+function FactList() {
+  return <section>Facts list</section>;
+}
+export default App;
