@@ -46,7 +46,7 @@ const initialFacts = [
 ];
 
 function App() {
-  const appTitle='Today I Learned'
+  const appTitle = "Today I Learned";
 
   return (
     <>
@@ -84,6 +84,44 @@ function CategoryFilter() {
 }
 
 function FactList() {
-  return <section>Facts list</section>;
+  //temporary data
+  const facts = initialFacts;
+  return (
+    <section>
+      <ul className="facts-list">
+        {facts.map((fact) => (
+          <Fact key={fact.id} fact={fact} />
+        ))}
+      </ul>
+    </section>
+  );
 }
+
+function Fact({ fact }) {
+  return (
+    <li key={fact.id} className="fact">
+      <p>
+        {fact.text}
+        <a className="source" href={fact.source} target="_blank">
+          (Source)
+        </a>
+      </p>
+      <span
+        className="tag"
+        style={{
+          backgroundColor: CATEGORIES.find((cat) => cat.name === fact.category)
+            .color,
+        }}
+      >
+        {fact.category}
+      </span>
+      <div className="vote-buttons">
+        <button>👍 {fact.votesInteresting}</button>
+        <button>🤯 {fact.votesMindblowing}</button>
+        <button>⛔️ {fact.votesFalse}</button>
+      </div>
+    </li>
+  );
+}
+
 export default App;
